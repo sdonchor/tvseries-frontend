@@ -1,23 +1,34 @@
 <template>
   <div class="login">
-    
-    <div v-if="!authdata">
-      
-
-    </div>
+    <v-container>
+      <v-row>
+        <v-text-field
+              label="Username"
+              v-model="login_form.username"
+            ></v-text-field>
+      </v-row>
+      <v-row>
+        <v-text-field
+              label="Password"
+              type="password"
+              v-model="login_form.password"
+            ></v-text-field>
+      </v-row>
+    </v-container>
     
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  name: 'Login',
   data: function(){
     return{
-      authdata : null
+      authdata : null,
+      login_form: {
+        username: null,
+        password: null
+      }
     }
   }
 }
