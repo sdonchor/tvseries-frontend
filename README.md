@@ -10,10 +10,9 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Frameworks and libs
 ```
-npm run build
+Vue.js
+Vuetify
+Axios
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
