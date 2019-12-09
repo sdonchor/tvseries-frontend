@@ -6,6 +6,7 @@
       clipped
     >
       <v-list dense>
+        <!--Lewe menu tutaj-->
         <v-list-item link>
           <v-list-item-action>
             <v-icon>mdi-view-dashboard</v-icon>
@@ -14,6 +15,25 @@
             <v-list-item-title>Dashboard</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
+        <v-list-item link>
+          <v-list-item-action>
+            <v-icon>mdi-movie-roll</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Shows</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+         <v-list-item link>
+          <v-list-item-action>
+            <v-icon>mdi-account-group</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Users</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
         <v-list-item link>
           <v-list-item-action>
             <v-icon>mdi-settings</v-icon>
@@ -22,15 +42,35 @@
             <v-list-item-title>Settings</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
+          <v-list-item link>
+          <v-list-item-action>
+            <v-icon>mdi-tune</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Admin panel</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      <!--Koniec menu-->
       </v-list>
     </v-navigation-drawer>
 
     <v-app-bar
       app
       clipped-left
+      color="red darken-4"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>SocialWebsiteAboutTvSeriesAndIDontKnowHowToNameIt</v-toolbar-title>
+      <v-spacer></v-spacer>
+
+      <v-btn v-if="!auth" x-large color="red accent-2" dark><v-icon>mdi-account</v-icon>Log in</v-btn>
+
+      <div v-else><v-btn color="red accent-2" fab small dark style="margin-right:10px;">
+                <v-icon>mdi-account</v-icon>
+              </v-btn>{{auth.username}}</div>
+
+
     </v-app-bar>
 
     <v-content>
@@ -43,40 +83,13 @@
           justify="center"
         >
           <v-col class="shrink">
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  :href="source"
-                  icon
-                  large
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn>
-              </template>
-              <span>Source</span>
-            </v-tooltip>
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  icon
-                  large
-                  href="https://codepen.io/johnjleider/pen/bXNzZL"
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-codepen</v-icon>
-                </v-btn>
-              </template>
-              <span>Codepen</span>
-            </v-tooltip>
+           ujujuj
           </v-col>
         </v-row>
       </v-container>
     </v-content>
 
-    <v-footer app>
+    <v-footer app >
       <span>&copy; 2019</span>
     </v-footer>
   </v-app>
@@ -90,6 +103,7 @@
 
     data: () => ({
       drawer: null,
+      auth: null,
     }),
 
     created () {
@@ -97,3 +111,7 @@
     },
   }
 </script>
+
+<style>
+
+</style>
