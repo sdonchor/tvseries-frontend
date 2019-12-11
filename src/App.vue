@@ -7,7 +7,7 @@
     >
       <v-list dense>
         <!--Lewe menu tutaj-->
-        <v-list-item link>
+        <v-list-item link to="/">
           <v-list-item-action>
             <v-icon>mdi-view-dashboard</v-icon>
           </v-list-item-action>
@@ -16,16 +16,25 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link>
+        <v-list-item link :to="{path:'/list', params: {user: auth}}" >
+          <v-list-item-action>
+            <v-icon>mdi-format-list-bulleted</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>My list</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link to="/series">
           <v-list-item-action>
             <v-icon>mdi-movie-roll</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Shows</v-list-item-title>
+            <v-list-item-title>Series</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-         <v-list-item link>
+         <v-list-item link to="/users">
           <v-list-item-action>
             <v-icon>mdi-account-group</v-icon>
           </v-list-item-action>
@@ -34,7 +43,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link>
+        <v-list-item link to="/settings">
           <v-list-item-action>
             <v-icon>mdi-settings</v-icon>
           </v-list-item-action>
@@ -43,7 +52,7 @@
           </v-list-item-content>
         </v-list-item>
 
-          <v-list-item link>
+          <v-list-item link to="/admin">
           <v-list-item-action>
             <v-icon>mdi-tune</v-icon>
           </v-list-item-action>
@@ -96,6 +105,7 @@
 </template>
 
 <script>
+import TvSeries from './components/TvSeries'
   export default {
     props: {
       source: String,
