@@ -83,7 +83,7 @@
           justify="center"
         >
           <v-col class="shrink">
-           ujujuj
+            <router-view/>
           </v-col>
         </v-row>
       </v-container>
