@@ -17,13 +17,18 @@ export default new VueRouter({
         {
             path: '/series',
             name: 'TvSeriesList',
-            component: TvSeriesList
+            component: TvSeriesList,
+            props: {
+                auth:null
+            }
         },
         {
             path: '/series/:id',
             name: 'TvSeries',
             component: TvSeries,
-            props: true
+            props: {
+                auth:null
+            }
         }
     ]
 })

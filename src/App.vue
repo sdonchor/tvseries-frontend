@@ -34,7 +34,7 @@
           </v-list-item-content>
         </v-list-item>
 
-         <v-list-item link to="/users">
+         <v-list-item link :to="{path:'/users'}">
           <v-list-item-action>
             <v-icon>mdi-account-group</v-icon>
           </v-list-item-action>
@@ -77,7 +77,7 @@
      
       <div v-else><v-btn color="red accent-2" fab small dark style="margin-right:10px;">
                 <v-icon>mdi-account</v-icon>
-              </v-btn>{{auth.username}}</div>
+              </v-btn>{{auth.login}}</div>
 
     <v-dialog v-model="loginform" max-width="500px">
      <Login @loggedIn="loggedIn"></Login>
@@ -121,6 +121,7 @@ import Login from './components/Login'
     }),
     methods:{
       loggedIn(auth){
+        
         this.loginform=false;
         this.auth=auth;
       }
