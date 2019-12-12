@@ -15,4 +15,5 @@ npm run serve
 Vue.js
 Vuetify
 Axios
+Vue Router
 ```
