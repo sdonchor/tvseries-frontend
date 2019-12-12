@@ -91,7 +91,7 @@
           align="center"
           justify="center"
         >
-          <v-col class="shrink">
+          <v-col>
             <router-view/>
           </v-col>
         </v-row>
@@ -105,7 +105,6 @@
 </template>
 
 <script>
-import TvSeries from './components/TvSeries'
   export default {
     props: {
       source: String,

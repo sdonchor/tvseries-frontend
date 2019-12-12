@@ -22,7 +22,8 @@ export default new VueRouter({
         {
             path: '/series/:id',
             name: 'TvSeries',
-            component: TvSeries
+            component: TvSeries,
+            props: true
         }
     ]
 })
