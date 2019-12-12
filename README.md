@@ -16,4 +16,5 @@ Vue.js
 Vuetify
 Axios
 Vue Router
+Vue Cookie
 ```
