@@ -12,7 +12,7 @@
             <v-icon>mdi-view-dashboard</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Dashboard</v-list-item-title>
+            <v-list-item-title>Strona główna</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -21,7 +21,7 @@
             <v-icon>mdi-format-list-bulleted</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>My list</v-list-item-title>
+            <v-list-item-title>Moja lista</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -30,7 +30,7 @@
             <v-icon>mdi-movie-roll</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Series</v-list-item-title>
+            <v-list-item-title>Seriale</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -39,7 +39,7 @@
             <v-icon>mdi-account-group</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Users</v-list-item-title>
+            <v-list-item-title>Użyszkodnicy</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -48,7 +48,7 @@
             <v-icon>mdi-settings</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Settings</v-list-item-title>
+            <v-list-item-title>Ustawienia</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -57,7 +57,7 @@
             <v-icon>mdi-tune</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Admin panel</v-list-item-title>
+            <v-list-item-title>Panel administracyjny</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       <!--Koniec menu-->
@@ -73,12 +73,15 @@
       <v-toolbar-title>SocialWebsiteAboutTvSeriesAndIDontKnowHowToNameIt</v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-btn v-if="!auth" x-large color="red accent-2" dark><v-icon>mdi-account</v-icon>Log in</v-btn>
-
+      <v-btn v-if="!auth" x-large color="red accent-2" dark @click="loginform=true"><v-icon>mdi-account</v-icon>Zaloguj</v-btn>
+     
       <div v-else><v-btn color="red accent-2" fab small dark style="margin-right:10px;">
                 <v-icon>mdi-account</v-icon>
               </v-btn>{{auth.username}}</div>
 
+    <v-dialog v-model="loginform" max-width="500px">
+     <Login @loggedIn="loggedIn"></Login>
+    </v-dialog>
 
     </v-app-bar>
 
@@ -105,19 +108,29 @@
 </template>
 
 <script>
+import Login from './components/Login'
   export default {
     props: {
       source: String,
     },
 
     data: () => ({
+      loginform: false,
       drawer: null,
       auth: null,
     }),
-
+    methods:{
+      loggedIn(auth){
+        this.loginform=false;
+        this.auth=auth;
+      }
+    },
     created () {
       this.$vuetify.theme.dark = true
     },
+    components:{
+      Login
+    }
   }
 </script>
 

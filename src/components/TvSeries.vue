@@ -11,7 +11,7 @@
                 <v-expansion-panel>
                     <v-expansion-panel-header>Lista odcinków</v-expansion-panel-header>
                     <v-expansion-panel-content>
-                        <v-list-item v-for="episode in response.setOfEpisodes">
+                        <v-list-item :key="idx" v-for="(episode,idx) in response.setOfEpisodes">
                             <v-list-item-title class="font-weight-bold">s{{episode.season}}e{{episode.episodeNumber}}</v-list-item-title>
                             <v-list-item-subtitle>{{episode.title}}</v-list-item-subtitle>
                         </v-list-item>
