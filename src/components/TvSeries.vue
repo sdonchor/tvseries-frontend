@@ -84,7 +84,10 @@ export default {
                       }
               )
               .then(response => {
-                if (response.status === 200) console.log("ok");
+                if (response.status === 200) {
+                    event.target.classList.remove("mdi-checkbox-blank");
+                    event.target.classList.add("mdi-checkbox-marked");
+                }
               });
     },
     getShowInfo() {
