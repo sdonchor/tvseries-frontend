@@ -70,7 +70,7 @@
       color="red darken-4"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>SocialWebsiteAboutTvSeriesAndIDontKnowHowToNameIt</v-toolbar-title>
+      <v-toolbar-title>Serialweb</v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-btn v-if="!auth" x-large color="red accent-2" dark @click="loginform=true"><v-icon>mdi-account</v-icon>Zaloguj</v-btn>
