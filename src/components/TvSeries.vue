@@ -29,9 +29,12 @@
                 <v-list-item-title class="font-weight-bold"
                   >s{{ episode.season }}e{{
                     episode.episodeNumber
-                  }}</v-list-item-title
+                  }}
+                  <v-icon v-if="watchedList.find(ep => ep.idEpisode === episode.idEpisode)">mdi-checkbox-marked</v-icon>
+                  <v-icon v-else @click.stop="watched($event, episode.idEpisode)">mdi-checkbox-blank</v-icon>
+                </v-list-item-title
                 >
-                <v-list-item-subtitle>{{ episode.title }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{ episode.title }} </v-list-item-subtitle>
               </v-list-item>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -52,6 +55,7 @@ export default {
   data() {
     return {
       response: null,
+      watchedList: null,
       loadingmessage: "Ładowanie...",
       auth: authdata.auth
     };
@@ -62,6 +66,26 @@ export default {
     },
     unauthorized() {
       this.loadingmessage = "Zawartość dostępna dla zalogowanych użytkowników.";
+    },
+    watched(event, id) {
+      this.refreshAuth();
+      if (!this.auth) {
+        this.unauthorized();
+        return;
+      }
+      const authstr = "Bearer " + this.auth.jwt;
+      axios
+              .put(
+                      "https://tv-series-ssi.herokuapp.com/api/users/" + this.auth.idUser + "/episodes/" + id, "",
+                      {
+                        headers: {
+                          Authorization: authstr
+                        }
+                      }
+              )
+              .then(response => {
+                if (response.status === 200) console.log("ok");
+              });
     },
     getShowInfo() {
       this.refreshAuth();
@@ -87,6 +111,22 @@ export default {
         .catch(error => {
           this.unauthorized();
         });
+      axios
+            .get(
+                    "https://tv-series-ssi.herokuapp.com/api/users/" + this.auth.idUser + "/episodes/",
+                    {
+                      headers: {
+                        Authorization: authstr
+                      }
+                    }
+            )
+            .then(response => {
+              this.watchedList = response.data;
+              console.log(this.watchedList);
+            })
+            .catch(error => {
+              this.unauthorized();
+            });
     }
   },
   mounted() {
